@@ -1,7 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavBar = () => {
+  const [search , setSearch]=useState('')
+  const navigate = useNavigate()
+  const handlerSubmit = (e) =>{
+e.preventDefault()
+navigate(`./search?name=${search}`)
+setSearch('')
+  }
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -22,28 +29,21 @@ const NavBar = () => {
                 Add Contact
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/view" className="nav-link">
-                View
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/edit" className="nav-link">
-                Edit
-              </Link>
-            </li>
+          
+           
             <li className="nav-item">
               <Link to="/about" className="nav-link">
                 About
               </Link>
             </li>
           </ul>
-          <form className="d-flex">
+          <form className="d-flex" onSubmit={handlerSubmit}>
             <input
               className="form-control me-2"
               type="search"
               placeholder="Search"
-              aria-label="Search"
+              value={search}
+              onChange={(e)=>setSearch(e.target.value)}
             />
             <button className="btn btn-outline-success" type="submit">
               Search
