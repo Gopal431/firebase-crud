@@ -1,12 +1,12 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
 const firebaseConfig = {
-    apiKey: "AIzaSyAc5dSrE4VUuVMfK_KA6v_It2s-zChGUAE",
-    authDomain: "react-curd-62c7d.firebaseapp.com",
-    projectId: "react-curd-62c7d",
-    storageBucket: "react-curd-62c7d.appspot.com",
-    messagingSenderId: "668656205250",
-    appId: "1:668656205250:web:132b0d3c4a14455d50aa5b"
+    apiKey:process.env.REACT_APP_API_KEY,
+    authDomain:process.env.REACT_APP_AUTH_DOMAIN,
+    projectId:process.env.REACT_APP_PROJECT_ID,
+    storageBucket:process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId:process.env.REACT_APP_MESSSAGING_SENDER_ID,
+    appId:process.env.REACT_APP_APP_ID
   };
   const firedb = firebase.initializeApp(firebaseConfig)
   export default firedb.database().ref();
